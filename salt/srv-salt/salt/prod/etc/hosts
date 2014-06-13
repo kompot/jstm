@@ -1,0 +1,10 @@
+127.0.0.1 localhost
+
+{% if salt['pillar.get']('run_mode') == 'dev' %}
+192.168.101.1 host
+{% endif %}
+
+{% for server, ip in salt['mine.get']('*', 'network.interfaces').items() %}
+{{ ip[pillar['interface']]['inet'][0]['address'] }}    {{ server }}
+{{ ip[pillar['interface']]['inet'][0]['address'] }}    {{ server.split('.')[0] }}
+{% endfor %}

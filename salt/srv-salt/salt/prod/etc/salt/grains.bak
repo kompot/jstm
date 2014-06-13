@@ -1,0 +1,12 @@
+{% if grains['id'].startswith('uluwatu') %}
+roles:
+  - balancer
+{% if salt['pillar.get']('run_mode') == 'dev' %}
+  - salt-master
+{% endif %}
+{% endif %}
+
+{% if grains['id'].startswith('kuta') %}
+roles:
+  - dev
+{% endif %}

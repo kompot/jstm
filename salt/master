@@ -1,0 +1,23 @@
+log_level: info
+
+open_mode: True
+
+auto_accept: True
+
+file_roots:
+  taskmanager_dev:
+    - /srv/salt/dev
+    - /srv/salt/prod
+  taskmanager_prod:
+    - /srv/salt/prod
+
+pillar_roots:
+  taskmanager_dev:
+    - /srv/pillar/dev
+    - /srv/pillar/prod
+  taskmanager_prod:
+    - /srv/pillar/prod
+
+reactor:
+  - 'newmongodbnode':
+    - /srv/reactor/new_mongodb_node.sls

@@ -5,5 +5,9 @@
   "private": true,
   "dependencies": {
     "express": "4.4.x"
+  },
+  "scripts": {
+    "beforedev": "npm i -g pm2",
+    "dev": "pm2 start --watch index.js"
   }
 }
