@@ -1,4 +1,4 @@
-taskmanager_prod:
+jstm_prod:
   '*':
     - saltmine
     - network

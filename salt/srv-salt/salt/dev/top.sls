@@ -1,4 +1,4 @@
-jstm_prod:
+jstm_dev:
   'roles:balancer':
     - match: grain
     - common

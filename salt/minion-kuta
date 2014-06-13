@@ -4,19 +4,20 @@ master: 192.168.101.3
 log_level: info
 
 file_roots:
-  taskmanager_dev:
+  jstm_dev:
     - /srv/salt/dev
     - /srv/salt/prod
-  taskmanager_prod:
+  jstm_prod:
     - /srv/salt/prod
 
 pillar_roots:
-  taskmanager_dev:
+  jstm_dev:
     - /srv/pillar/dev
     - /srv/pillar/prod
-  taskmanager_prod:
+  jstm_prod:
     - /srv/pillar/prod
 
 grains:
   roles:
     - dev
+    - front

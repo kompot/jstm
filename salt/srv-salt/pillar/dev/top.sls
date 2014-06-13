@@ -1,4 +1,4 @@
-taskmanager_dev:
+jstm_dev:
   '*':
     - saltmine
     - network
