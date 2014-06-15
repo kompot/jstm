@@ -8,8 +8,10 @@ Vagrant.require_version '>= 1.6.3'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.box = 'ubuntu14.04x64'
-  config.vm.box_url = 'http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box'
+  # config.vm.box = 'ubuntu14.04x64'
+  # config.vm.box_url = 'http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box'
+  config.vm.box = 'ubuntu12.04x64'
+  config.vm.box_url = 'http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box'
 
   config.vm.provider :virtualbox do |vb|
     vb.customize ['modifyvm', :id, '--memory', 512]
@@ -19,16 +21,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     salt.minion_key = 'salt/key/minion.pem'
     salt.minion_pub = 'salt/key/minion.pub'
     salt.verbose = true
-  end
-
-  config.vm.define 'kuta.jstm.local' do |v|
-    v.vm.hostname = 'kuta.jstm.local'
-    v.vm.network :private_network, ip: '192.168.101.2'
-    v.vm.synced_folder '.', '/home/vagrant/app/'
-
-    v.vm.provision :salt do |salt|
-      salt.minion_config = 'salt/minion-kuta'
-    end
   end
 
   config.vm.define 'uluwatu.jstm.local' do |v|
@@ -46,9 +38,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       salt.master_config = 'salt/master'
       salt.master_key = 'salt/key/master.pem'
       salt.master_pub = 'salt/key/master.pub'
-      salt.verbose = true
       salt.seed_master = {minion: salt.minion_pub}
       # salt.run_overstate = true
+    end
+  end
+
+  config.vm.define 'kuta.jstm.local' do |v|
+    v.vm.hostname = 'kuta.jstm.local'
+    v.vm.network :private_network, ip: '192.168.101.2'
+    v.vm.synced_folder '.', '/home/vagrant/app/'
+
+    v.vm.provision :salt do |salt|
+      salt.minion_config = 'salt/minion-kuta'
     end
   end
 
