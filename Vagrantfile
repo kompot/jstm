@@ -24,7 +24,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define 'kuta.jstm.local' do |v|
     v.vm.hostname = 'kuta.jstm.local'
     v.vm.network :private_network, ip: '192.168.101.2'
-    v.vm.synced_folder '/Users/kompot/projects/jstm/', '/home/vagrant/app/'
+    v.vm.synced_folder '.', '/home/vagrant/app/'
 
     v.vm.provision :salt do |salt|
       salt.minion_config = 'salt/minion-kuta'

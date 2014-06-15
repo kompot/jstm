@@ -7,4 +7,5 @@ jstm_prod:
     - match: grain
     - common
     - node
+    - compass
     - dev
